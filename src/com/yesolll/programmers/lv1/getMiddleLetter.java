@@ -1,6 +1,6 @@
 package com.yesolll.programmers.lv1;
 
-public class getMiddleLetter {
+public class GetMiddleLetter {
 
     public String solution(String s) {
         final int HALF_OF_LENGTH = s.length() / 2;
@@ -17,7 +17,7 @@ public class getMiddleLetter {
     }
 
     public static void main(String[] args) {
-        getMiddleLetter q = new getMiddleLetter();
+        GetMiddleLetter q = new GetMiddleLetter();
         String output = q.solution("yesolll");
         System.out.println(output);        
     }
