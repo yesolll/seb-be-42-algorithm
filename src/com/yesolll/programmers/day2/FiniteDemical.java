@@ -1,4 +1,4 @@
-package com.yesolll.programmers.lv1;
+package com.yesolll.programmers.day2;
 
 public class FiniteDemical {
     public int solution(int a, int b) {

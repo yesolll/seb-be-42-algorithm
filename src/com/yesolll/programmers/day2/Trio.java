@@ -1,4 +1,4 @@
-package com.yesolll.programmers.lv1;
+package com.yesolll.programmers.day2;
 
 public class Trio {
     public int solution(int[] numbers) {

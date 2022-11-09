@@ -1,4 +1,4 @@
-package com.yesolll.programmers.lv1;
+package com.yesolll.programmers.day1;
 
 import java.util.Scanner;
 

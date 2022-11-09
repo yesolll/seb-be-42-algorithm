@@ -1,4 +1,4 @@
-package com.yesolll.programmers.lv1;
+package com.yesolll.programmers.day2;
 
 public class Watermelon {
     public String solution(int n) {
