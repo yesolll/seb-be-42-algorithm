@@ -1,4 +1,4 @@
-package com.yesolll.programmers.myself;
+package com.yesolll.programmers.myself.lv0;
 
 public class ReverseString {
     public void solution(String my_string) {

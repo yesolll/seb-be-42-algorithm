@@ -1,4 +1,4 @@
-package com.yesolll.programmers.myself;
+package com.yesolll.programmers.myself.lv0;
 
 public class Dividex1000 {
     public static int solution(int num1, int num2) {
