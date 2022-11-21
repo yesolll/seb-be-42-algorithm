@@ -16,12 +16,11 @@ public class Div {
         int castingValue = (int) (num1 / (double) num2); 
         System.out.printf("4. %d %% %d = %d\n", num1, num2, castingValue);
 
-        long a = 10L;
-        float b = 3.2f;
-        
-        float c = a * b;
+        // long a = 10L;
+        // float b = 3.2f;
+        // float c = a * b;
         // long d = a * b;
-        long e = (long)(a * b);
+        // long e = (long)(a * b);
 
 
         return 0;

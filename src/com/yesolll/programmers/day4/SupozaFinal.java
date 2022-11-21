@@ -2,7 +2,6 @@ package com.yesolll.programmers.day4;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class SupozaFinal {
     public static void main(String[] args) {
