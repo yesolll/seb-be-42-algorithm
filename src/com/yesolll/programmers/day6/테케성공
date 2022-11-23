@@ -1,0 +1,53 @@
+import java.util.Arrays;
+
+class Solution {
+    public static int solution(String dartResult) {
+        final String BONUS = "SDT"; 
+        final String SPACE = " ";
+
+        for (int i = 2; i < dartResult.length(); i++) {
+            String bonus = dartResult.charAt(i) + "";
+            if (BONUS.contains(bonus)) {
+                String score = dartResult.charAt(i-1) + "";
+                if (dartResult.charAt(i-2) == '1'){
+                    dartResult = dartResult.replace("10", SPACE + "10");
+                    i+=2;
+                } else {
+                    dartResult = dartResult.replace(score, SPACE + score);
+                    i++;    
+                }
+            }
+        }
+
+        
+        String[] dartResults = dartResult.split(SPACE);
+        int[] scores = new int[4];
+        for (int i = 0; i < dartResults.length; i++) {
+            int score = (dartResults[i].charAt(0) == '1' && dartResults[i].charAt(1) == '0') ? 10 : dartResults[i].charAt(0)-'0';
+            for (int j = 1; j < dartResults[i].length(); j++) {
+                char bonusOption = dartResults[i].charAt(j);
+                switch(bonusOption) {
+                    case 'S': 
+                        scores[i] += score;
+                        break;
+                    case 'D':
+                        scores[i] += Math.pow(score, 2);
+                        break;
+                    case 'T':
+                        scores[i] += Math.pow(score, 3);
+                        break;
+                    case '*':
+                        scores[i] *= 2;
+                        if (i != 0) scores[i-1] *= 2;
+                        break;
+                    case '#':
+                        scores[i] *= -1;
+                        break;
+                }
+            }
+        }
+
+        int answer = Arrays.stream(scores).sum();
+        return answer;
+    }
+}
