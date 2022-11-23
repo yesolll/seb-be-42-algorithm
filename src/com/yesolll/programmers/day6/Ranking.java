@@ -2,6 +2,15 @@ package com.yesolll.programmers.day6;
 
 public class Ranking {
     public static int[] solution(int[][] score) {
+        /*
+         * 1. 평균 배열을 만든다 [75, 70, 55, 65] 
+         * 
+         * 2. 순회하면서 등수를 매긴다 [1, 2, 4, 3]
+         *    2-1) 비교해서 점수가 낮은 애 등수++
+         *    2-2) 동점일 때 자기 자신이면 등수++, 다른 사람이면 더하지 않는다. (문제조건 공동석차)
+         * 
+         */
+
         int[] answer = new int[score.length];
         double[] averageArr = new double[score.length];
 
