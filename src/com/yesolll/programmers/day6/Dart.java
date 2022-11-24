@@ -18,25 +18,27 @@ public class Dart {
         // SCORE에 해당하면 점수이다. 점수 앞 부분까지 자르면 이전 회차의 점수+보너스+옵션
         final String SCORE = "123456789"; 
         final String SPACE = " ";
+        // split 해주기 위해서 
         StringBuffer strForSplit = new StringBuffer();
 
+        // 한 글자씩 돌아가면서 숫자가 나오면 앞에까지 끊어주는 작업
         for (int i = 1; i < dartResult.length(); i++) {
             String currentStr = dartResult.charAt(i)+"";
-            if (SCORE.contains(currentStr)) { // 현재 글자가 숫자인가
+            if (SCORE.contains(currentStr)) { // 현재 글자가 SCORE에 포함되는가
                 // ex) "1S2D*3T" -> strForSplit에 "1S " 넣고 "2D*3T"로 잘라서 넣기
-                strForSplit.append(dartResult.substring(0, i)).append(SPACE); // (이전 회차 점수+보너스+옵션 + " ")
-                dartResult = dartResult.substring(i, dartResult.length()); // 점수 잘라주기
+                strForSplit.append(dartResult.substring(0, i)).append(SPACE); // ("1S" + " ")
+                dartResult = dartResult.substring(i, dartResult.length()); // 점수 잘라주기 ("2D*3T")
                 i = 1;
               
-               //현재 글자가 0인데 앞이 1이 아닌가 ( == 0점인가)
-               // ex) "10S2D*3T"
+               //현재 글자가 0인데 앞이 1이 아닌가 ( 10점이 아닌가 (== 0점인가))
+               // ex) "1S10D*3T"
             } else if (currentStr.equals("0") && dartResult.charAt(i-1) != '1') {
                 strForSplit.append(dartResult.substring(0, i)).append(SPACE);
                 dartResult = dartResult.substring(i, dartResult.length());
                 i = 1;
             }
             
-            // 남은 점수가 한회차인가 (10은 최대 글자가 4자리, 나머지는 3자리)
+            // 다 잘려나가고 마지막 회차인가 (10은 최대 글자가 4자리, 나머지는 3자리)
             if(
                 dartResult.length() <= 3 || 
                 (dartResult.length() <= 4 && dartResult.substring(0, 2).equals("10"))
@@ -45,8 +47,9 @@ public class Dart {
                 dartResult = ""; // --> for 탈출
             }
         }
-                            // "1S 2D* 3T"
+                            // "1S 2D* 3T" => ["1S 2D* 3T"]
         String[] dartResults = strForSplit.toString().split(SPACE);
+        // for (String str : dartResults) System.out.println(str);
 
         // 각 회차의 점수를 계산해서 넣어줄 배열 [1회차, 2회차, 3회차] ex) [2,8,27]
         int[] answers = new int[3];
@@ -56,7 +59,7 @@ public class Dart {
             int score = (dartResults[i].charAt(0) == '1' && dartResults[i].charAt(1) == '0') ? 
                         10 : 
                         dartResults[i].charAt(0)-'0';
-            // 한 회차 점수 순회 "2D*"
+            // 한 회차 점수 순회
             for (int j = 1; j < dartResults[i].length(); j++) {
                 char bonusOption = dartResults[i].charAt(j);
                 switch(bonusOption) {
@@ -80,7 +83,7 @@ public class Dart {
                 }
             }
         }
-
+        //                         [2,8,27]
         int answer = Arrays.stream(answers).sum();
         return answer;
     }
@@ -89,6 +92,7 @@ public class Dart {
 
     public static void main(String[] args) {
         int output = solution("1S2D*3T");
+        // int output = solution("1S10D*3T");
         // int output = solution("10S2D*0T");
         // int output = solution("0S*0D*10T");
         // int output = solution("10S#6D*10T#");
