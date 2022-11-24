@@ -11,14 +11,16 @@ public class Ranking {
          * 
          */
 
-        int[] answer = new int[score.length];
+        // 석차가 들어갈 배열 변수
+        int[] answer = new int[score.length]; // [0,0,0,0]
+        // 평균이 들어갈 배열 변수
         double[] averageArr = new double[score.length];
 
         int idx = 0;
         for (int[] arr : score) {
             averageArr[idx] = (arr[0] + arr[1]) / (double)2;
             idx++;
-        }
+        } // => [75, 70, 55, 65] 
 
         for (int i = 0; i < averageArr.length; i++) {
             for (int j = i; j < averageArr.length; j++) {
