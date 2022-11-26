@@ -31,5 +31,6 @@ public class MakePrime {
 
     public static void main(String[] args) {
         int output = solution(new int[]{1,2,7,6,4});
+        System.out.println(output);
     }
 }

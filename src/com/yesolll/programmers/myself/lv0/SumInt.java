@@ -1,7 +1,5 @@
 package com.yesolll.programmers.myself.lv0;
 
-import java.util.stream.Stream;
-
 public class SumInt {
     public int solution(int n) {
         // int answer = 0;
