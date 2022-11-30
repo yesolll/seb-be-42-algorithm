@@ -2,7 +2,7 @@ import java.util.*;
 
 class Solution {
     public int[] solution(int[] numbers, String direction) {
-        int[] answer = new int[]{};
+        int[] answer = {};
         if(direction.equals("right")) {
             answer = new int[numbers.length];
             answer[0] = numbers[numbers.length-1];
