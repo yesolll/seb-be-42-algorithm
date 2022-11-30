@@ -7,7 +7,6 @@ class Solution {
         int minusProduct = 0;
         int plusProduct = 0;
         Arrays.sort(numbers);
-        minusCnt = (int) Arrays.stream(numbers).filter(i -> i < 0).count();
         minusProduct = numbers[0] * numbers[1];
         plusProduct = numbers[numbers.length-1] * numbers[numbers.length-2];
         
