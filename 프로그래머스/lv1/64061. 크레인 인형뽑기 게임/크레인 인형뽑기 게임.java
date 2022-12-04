@@ -16,13 +16,13 @@ class Solution {
             Integer doll = pickDoll(rotatedBoard[moves[i]-1]);
             if (!bucket.empty() && bucket.peek() == doll) {
                 bucket.pop();
-                answer++;
+                answer+=2;
             }
             else {
                 if (doll != null) bucket.push(doll);
             }
         }
-        return answer * 2;
+        return answer;
     }
     
     public Integer pickDoll(int[] board) {
