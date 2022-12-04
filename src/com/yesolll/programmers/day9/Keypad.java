@@ -5,38 +5,44 @@ import java.util.Map;
 
 public class Keypad {
     public static String solution(int[] numbers, String hand) {
-        Map<String, Integer> map = new HashMap<>();
-        map.put("L", 10); // map.put("L", *);
-        map.put("R", 12); // map.put("R", #);
+        Map<String, Integer> currentButton = new HashMap<>(); // 어느 손으로 어떤 버튼 누르고 있는지 담을 map
+        currentButton.put("L", 10); // currentButton.put("L", *);
+        currentButton.put("R", 12); // currentButton.put("R", #);
 
         StringBuilder answer = new StringBuilder();
         for (int i = 0; i < numbers.length; i++) {
+            // 1) 1 or 4 or 7 -> 왼손
             if (numbers[i] == 1 || numbers[i] == 4 || numbers[i] == 7) {
                 answer.append("L");
-                map.put("L", numbers[i]);
+                currentButton.put("L", numbers[i]);
+            // 2) 3 or 6 or 9 -> 오른손
             } else if (numbers[i] == 3 || numbers[i] == 6 || numbers[i] == 9) {      
                 answer.append("R");          
-                map.put("R", numbers[i]);
+                currentButton.put("R", numbers[i]);
+            // 3) 2 or 5 or 8 or 0 -> 거리 확인
             } else {
-                int LeftDistance = getDistance(map.get("L"), numbers[i]);
-                int RightDistance = getDistance(map.get("R"), numbers[i]);
+                int LeftDistance = getDistance(currentButton.get("L"), numbers[i]);
+                int RightDistance = getDistance(currentButton.get("R"), numbers[i]);
+                // 3-1) 거리가 같으면 왼손/오른손잡이 대로
                 if (LeftDistance == RightDistance) {
                     String finger = hand.equals("left") ? "L" : "R";
-                    map.put(finger, numbers[i]);
                     answer.append(finger);
+                    currentButton.put(finger, numbers[i]);
+                // 3-2) 왼쪽 손이 가까우면 l
                 } else if (LeftDistance < RightDistance){
                     answer.append("L");
-                    map.put("L", numbers[i]);
+                    currentButton.put("L", numbers[i]);
+                // 3-3) 오른쪽 손이 가까우면 R
                 } else if (LeftDistance > RightDistance){
                     answer.append("R");
-                    map.put("R", numbers[i]);
+                    currentButton.put("R", numbers[i]);
                 }
             }
         }
         return answer.toString();
     }
 
-    public static int getDistance(Integer current, int next) {
+    public static int getDistance(int current, int next) {
         Map<Integer, int[]> locate = new HashMap<>();
         locate.put(1, new int[]{0,0});
         locate.put(2, new int[]{0,1});
@@ -51,10 +57,10 @@ public class Keypad {
         locate.put(0, new int[]{3,1});
         locate.put(12, new int[]{3,2});
         // {
-        //     {0,0}, {0,1}, {0,2},
-        //     {1,0}, {1,1}, {1,2},
-        //     {2,0}, {2,1}, {2,2},
-        //     {3,0}, {3,1}, {3,2},
+        //     1 {0,0}, 2 {0,1}, 3 {0,2},
+        //     4 {1,0}, 5 {1,1}, 6 {1,2},
+        //     7 {2,0}, 8 {2,1}, 9 {2,2},
+        //     * {3,0}, 0 {3,1}, # {3,2},
         // };
         int[] currentXy = locate.get(current);
         int[] nextXy = locate.get(next);
