@@ -61,7 +61,7 @@ class Solution {
         }
         
         for(Entry<Integer, HashMap<String, Integer>> result : results.entrySet()) {
-            List<Map.Entry<String, Integer>> list = new LinkedList<>(result.getValue().entrySet());
+            List<Map.Entry<String, Integer>> list = new ArrayList<>(result.getValue().entrySet());
             Collections.sort(list, new Comparator<Map.Entry<String, Integer>>() {
                 @Override
                 public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
