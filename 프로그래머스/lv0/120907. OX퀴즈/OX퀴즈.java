@@ -4,9 +4,9 @@ class Solution {
         
         for (int i = 0; i < quiz.length; i++) {
             String[] elements = quiz[i].split(" ");
-            String result = String.valueOf(calculate(elements));
+            int result = calculate(elements);
             
-            if (result.equals(elements[4])) answer[i] = "O";
+            if (result == Integer.parseInt(elements[4])) answer[i] = "O";
             else answer[i] ="X";
         }
         return answer;
