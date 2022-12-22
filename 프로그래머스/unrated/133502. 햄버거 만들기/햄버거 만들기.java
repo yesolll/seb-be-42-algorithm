@@ -3,9 +3,9 @@ class Solution {
         int answer = 0;
         StringBuilder sb = new StringBuilder();
 
-        for(int i=0; i<ingredient.length; i++) {
+        for (int i = 0; i < ingredient.length; i++) {
             sb.append(ingredient[i]); 
-            if(sb.length() >= 4) {
+            if (sb.length() >= 4) {
                 String burgerCheck = sb.substring(sb.length()-4, sb.length());
                 if (burgerCheck.equals("1231")) {
                     answer++;
