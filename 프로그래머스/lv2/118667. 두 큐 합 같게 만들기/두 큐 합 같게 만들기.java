@@ -4,9 +4,13 @@ import java.util.stream.Collectors;
 class Solution {
     public int solution(int[] queue1, int[] queue2) {
         Queue<Long> q1 
-            = new LinkedList<>(Arrays.stream(queue1).mapToLong(i -> i).boxed().collect(Collectors.toList()));
+            = new LinkedList<>(Arrays.stream(queue1).mapToLong(i -> i)
+                                                    .boxed()
+                                                    .collect(Collectors.toList()));
         Queue<Long> q2 
-            = new LinkedList<>(Arrays.stream(queue2).mapToLong(i -> i).boxed().collect(Collectors.toList()));
+            = new LinkedList<>(Arrays.stream(queue2).mapToLong(i -> i)
+                                                    .boxed()
+                                                    .collect(Collectors.toList()));
 
         long sum1 = q1.stream().mapToLong(i->i).sum();
         long sum2 = q2.stream().mapToLong(i->i).sum();
