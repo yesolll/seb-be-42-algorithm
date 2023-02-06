@@ -11,7 +11,7 @@ class Solution {
         for (int i : tangerine) {
             map.put(i, map.getOrDefault(i, 0) + 1);
         }
-        
+        // 귤 개수 내림차순 정렬
         List<Entry<Integer, Integer>> sorted =  map.entrySet().stream()
             .sorted(Collections.reverseOrder(Entry.comparingByValue()))
             .collect(Collectors.toList());
@@ -20,9 +20,7 @@ class Solution {
         for (Entry<Integer, Integer> entry : sorted) {
             cnt += entry.getValue();
             answer++;
-            if (cnt >= k) {
-                return answer;
-            }
+            if (cnt >= k) break;
         }
         return answer;
     }
